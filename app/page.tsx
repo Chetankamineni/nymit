@@ -1,8 +1,8 @@
 "use client";
 
-import { BentoCard, BentoGrid } from "@/components/ui/bento";
-import { Dither } from "@/components/ui/dither";
-import { RetroCode } from "@/components/ui/retro-code";
+import { BentoCard, BentoGrid } from "@/components/bento-grid";
+import { Dither } from "@/components/dither";
+import { RetroCode } from "@/components/retro-card";
 import { ArrowRight, BarChart3, Brain, Lock, Zap } from "lucide-react";
 
 export default function Home() {
