@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const codeSnippets = [
-  "import { Neural } from '@aevio/core';",
+  "import { Neural } from '@nymit/core';",
   "const user = await Neural.analyze({",
   "  heartRate: 72,",
   "  sleepScore: 85,",

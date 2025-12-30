@@ -1,8 +1,9 @@
 "use client";
 
-import { BentoCard, BentoGrid } from "@/components/bento-grid";
-import { Dither } from "@/components/dither";
-import { RetroCode } from "@/components/retro-card";
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
+import { Dither } from "@/components/ui/dither";
+import { HeroVisual } from "@/components/ui/hero";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { ArrowRight, BarChart3, Brain, Lock, Zap } from "lucide-react";
 
 export default function Home() {
@@ -17,25 +18,28 @@ export default function Home() {
             <div className="w-4 h-4 bg-black dark:bg-white" />
             nymit
           </div>
-          <div className="flex gap-6 text-sm font-medium">
-            <a
-              href="#"
-              className="hover:underline underline-offset-4 decoration-dotted"
-            >
-              Product
-            </a>
-            <a
-              href="#"
-              className="hover:underline underline-offset-4 decoration-dotted"
-            >
-              Manifesto
-            </a>
-            <a
-              href="#"
-              className="hover:underline underline-offset-4 decoration-dotted"
-            >
-              Pricing
-            </a>
+          <div className="flex items-center gap-6">
+            <div className="hidden md:flex gap-6 text-sm font-medium">
+              <a
+                href="#"
+                className="hover:underline underline-offset-4 decoration-dotted"
+              >
+                Product
+              </a>
+              <a
+                href="#"
+                className="hover:underline underline-offset-4 decoration-dotted"
+              >
+                Manifesto
+              </a>
+              <a
+                href="#"
+                className="hover:underline underline-offset-4 decoration-dotted"
+              >
+                Pricing
+              </a>
+            </div>
+            <ThemeToggle />
           </div>
         </div>
       </nav>
@@ -45,7 +49,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="inline-block border border-black dark:border-white px-3 py-1 text-xs font-mono uppercase tracking-widest">
-              v1.0.0 Beta
+              v1.0.0 Public Beta
             </div>
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9]">
               METRICS <br />
@@ -74,7 +78,7 @@ export default function Home() {
 
           <div className="relative">
             <div className="absolute -inset-1 bg-gradient-to-r from-neutral-200 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900 blur-lg opacity-50" />
-            <RetroCode className="shadow-2xl" />
+            <HeroVisual className="shadow-2xl" />
             {/* Decorative elements */}
             <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-black dark:bg-white z-0 opacity-10 pattern-dots" />
           </div>
@@ -92,6 +96,7 @@ export default function Home() {
             reconstruct your daily performance capacity.
           </p>
         </div>
+
         <BentoGrid>
           <BentoCard
             title="Neural Analysis"
@@ -148,7 +153,7 @@ export default function Home() {
             NYMIT INC.
           </div>
           <div className="text-xs text-neutral-500 font-mono">
-            © 2026 NYMIT SYSTEM. ALL RIGHTS RESERVED.
+            © 2025 NYMIT SYSTEM. ALL RIGHTS RESERVED.
           </div>
         </div>
       </footer>
