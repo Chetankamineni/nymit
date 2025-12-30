@@ -4,7 +4,7 @@ import { Sun, Moon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
@@ -12,7 +12,7 @@ export function ThemeToggle() {
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme == "light" ? "dark" : "light";
+    const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     document.documentElement.classList.toggle("dark");
   };
