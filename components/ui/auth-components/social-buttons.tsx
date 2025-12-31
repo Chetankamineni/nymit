@@ -1,7 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Chrome, Github } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
+import React from "react";
 
 interface SocialButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -24,9 +26,8 @@ export function SocialButton({
       )}
       {...props}
     >
-      {icon === "github" && <Github className="w-4 h-4" />}
-      {icon === "google" && <Chrome className="w-4 h-4" />}{" "}
-      {/* Using Chrome as proxy for Google icon for now */}
+      {icon === "github" && <FaGithub className="w-4 h-4" />}
+      {icon === "google" && <FcGoogle className="w-4 h-4" />}
       {label}
     </button>
   );
