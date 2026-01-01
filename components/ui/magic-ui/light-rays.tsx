@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState, type CSSProperties } from "react";
 import { motion } from "motion/react";
+import { useEffect, useState, type CSSProperties } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -12,6 +12,7 @@ interface LightRaysProps extends React.HTMLAttributes<HTMLDivElement> {
   blur?: number;
   speed?: number;
   length?: string;
+  blendMode?: React.CSSProperties["mixBlendMode"];
 }
 
 type LightRay = {
@@ -23,6 +24,7 @@ type LightRay = {
   delay: number;
   duration: number;
   intensity: number;
+  blendMode?: React.CSSProperties["mixBlendMode"];
 };
 
 const createRays = (count: number, cycle: number): LightRay[] => {
@@ -58,14 +60,16 @@ const Ray = ({
   delay,
   duration,
   intensity,
+  blendMode = "screen",
 }: LightRay) => {
   return (
     <motion.div
-      className="pointer-events-none absolute -top-[12%] left-[var(--ray-left)] h-[var(--light-rays-length)] w-[var(--ray-width)] origin-top -translate-x-1/2 rounded-full bg-gradient-to-b from-[color-mix(in_srgb,var(--light-rays-color)_70%,transparent)] to-transparent opacity-0 mix-blend-screen blur-[var(--light-rays-blur)]"
+      className="pointer-events-none absolute -top-[12%] left-[var(--ray-left)] h-[var(--light-rays-length)] w-[var(--ray-width)] origin-top -translate-x-1/2 rounded-full bg-gradient-to-b from-[color-mix(in_srgb,var(--light-rays-color)_70%,transparent)] to-transparent opacity-0 blur-[var(--light-rays-blur)]"
       style={
         {
           "--ray-left": `${left}%`,
           "--ray-width": `${width}px`,
+          mixBlendMode: blendMode,
         } as CSSProperties
       }
       initial={{ rotate: rotate }}
@@ -92,6 +96,7 @@ export function LightRays({
   blur = 36,
   speed = 14,
   length = "70vh",
+  blendMode = "screen",
   ref,
   ...props
 }: LightRaysProps) {
@@ -141,7 +146,7 @@ export function LightRays({
           }
         />
         {rays.map((ray) => (
-          <Ray key={ray.id} {...ray} />
+          <Ray key={ray.id} {...ray} blendMode={blendMode} />
         ))}
       </div>
     </div>
