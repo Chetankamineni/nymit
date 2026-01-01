@@ -4,11 +4,12 @@ import { AnimatedBeam } from "@/components/ui/magic-ui/animated-beam";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import {
+  Repeat,
   Activity,
   Brain,
   TrendingUp,
   FileText,
-  MoveUpRight,
+  Utensils,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
