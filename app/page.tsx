@@ -4,8 +4,8 @@ import { BentoCard, BentoGrid } from "@/components/ui/hero-section/bento-grid";
 import { Dither } from "@/components/ui/hero-section/dither";
 import { HeroVisual } from "@/components/ui/hero-section/hero";
 import { ThemeToggle } from "@/components/ui/hero-section/theme-toggle";
+import { IntuitiveInteractions } from "@/components/ui/intuitive-interactions/intuitive-interactions";
 import { LightRays } from "@/components/ui/magic-ui/light-rays";
-import { FeatureShowcase } from "@/components/ui/showcase/feature-showcase";
 import { ArrowRight, BarChart3, Brain, Lock, Zap } from "lucide-react";
 import Link from "next/link";
 
@@ -103,20 +103,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Showcase Section */}
-      <section className="py-24 px-6 border-b border-black/10 dark:border-white/10">
-        <div className="max-w-7xl mx-auto mb-12 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter mb-4">
-            INTUITIVE INTERACTIONS
-          </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-            Designed for speed and fluidity. Every interaction is a
-            micro-delight.
-          </p>
-        </div>
-        <FeatureShowcase />
-      </section>
-
       {/* Features / Bento Grid */}
       <section className="py-24 px-6 bg-neutral-50 dark:bg-black">
         <div className="max-w-7xl mx-auto mb-16">
@@ -176,6 +162,9 @@ export default function Home() {
           />
         </BentoGrid>
       </section>
+
+      {/* Intuitive Interactions Section */}
+      <IntuitiveInteractions />
 
       {/* Footer */}
       <footer className="border-t border-black/10 dark:border-white/10 py-12 px-6 bg-white dark:bg-black">

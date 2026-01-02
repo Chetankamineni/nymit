@@ -50,7 +50,7 @@ export default function AuthenticationPage() {
       title={isSignUp ? "Create an account" : "Welcome back"}
       subtitle={
         isSignUp
-          ? "Join Aevio to start tracking your high-performance metrics"
+          ? "Join Nymit to start tracking your high-performance metrics"
           : "Enter your credentials to access your journal"
       }
     >
