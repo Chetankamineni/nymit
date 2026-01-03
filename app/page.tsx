@@ -5,6 +5,7 @@ import { Dither } from "@/components/ui/hero-section/dither";
 import { HeroVisual } from "@/components/ui/hero-section/hero";
 import { ThemeToggle } from "@/components/ui/hero-section/theme-toggle";
 import { IntuitiveInteractions } from "@/components/ui/intuitive-interactions/intuitive-interactions";
+import { FeaturesOrbit } from "@/components/ui/landing/features-orbit";
 import { LightRays } from "@/components/ui/magic-ui/light-rays";
 import { ArrowRight, BarChart3, Brain, Lock, Zap } from "lucide-react";
 import Link from "next/link";
@@ -17,7 +18,7 @@ export default function Home() {
         aria-hidden="true"
       >
         <LightRays
-          color="rgba(0, 0, 0, 0.05)"
+          color="transparent"
           blendMode="multiply"
           count={20}
           speed={8}
@@ -95,8 +96,8 @@ export default function Home() {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-neutral-200 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900 blur-lg opacity-50" />
-            <HeroVisual className="shadow-2xl" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-neutral-200 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900 blur-md opacity-0" />
+            <FeaturesOrbit />
             {/* Decorative elements */}
             <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-black dark:bg-white z-0 opacity-10 pattern-dots" />
           </div>
