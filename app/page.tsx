@@ -4,6 +4,7 @@ import { BentoCard, BentoGrid } from "@/components/ui/hero-section/bento-grid";
 import { Dither } from "@/components/ui/hero-section/dither";
 import { HeroVisual } from "@/components/ui/hero-section/hero";
 import { ThemeToggle } from "@/components/ui/hero-section/theme-toggle";
+import { IntegrationDiagram } from "@/components/ui/integration-diagram";
 import { IntuitiveInteractions } from "@/components/ui/intuitive-interactions/intuitive-interactions";
 import { FeaturesOrbit } from "@/components/ui/landing/features-orbit";
 import { LightRays } from "@/components/ui/magic-ui/light-rays";
@@ -166,6 +167,9 @@ export default function Home() {
 
       {/* Intuitive Interactions Section */}
       <IntuitiveInteractions />
+
+      {/* Integration Diagram Section */}
+      <IntegrationDiagram />
 
       {/* Footer */}
       <footer className="border-t border-black/10 dark:border-white/10 py-12 px-6 bg-white dark:bg-black">
