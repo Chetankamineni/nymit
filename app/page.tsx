@@ -8,6 +8,7 @@ import { IntegrationDiagram } from "@/components/ui/integration-diagram";
 import { IntuitiveInteractions } from "@/components/ui/intuitive-interactions/intuitive-interactions";
 import { FeaturesOrbit } from "@/components/ui/landing/features-orbit";
 import { LightRays } from "@/components/ui/magic-ui/light-rays";
+import { PreFooterCTA } from "@/components/ui/pre-footer-cta";
 import { ArrowRight, BarChart3, Brain, Lock, Zap } from "lucide-react";
 import Link from "next/link";
 
@@ -171,6 +172,7 @@ export default function Home() {
       {/* Integration Diagram Section */}
       <IntegrationDiagram />
 
+      <PreFooterCTA />
       {/* Footer */}
       <footer className="border-t border-black/10 dark:border-white/10 py-12 px-6 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
