@@ -2,14 +2,23 @@
 
 import { BentoCard, BentoGrid } from "@/components/ui/hero-section/bento-grid";
 import { Dither } from "@/components/ui/hero-section/dither";
-import { HeroVisual } from "@/components/ui/hero-section/hero";
 import { ThemeToggle } from "@/components/ui/hero-section/theme-toggle";
 import { IntegrationDiagram } from "@/components/ui/integration-diagram";
 import { IntuitiveInteractions } from "@/components/ui/intuitive-interactions/intuitive-interactions";
 import { FeaturesOrbit } from "@/components/ui/landing/features-orbit";
 import { LightRays } from "@/components/ui/magic-ui/light-rays";
 import { PreFooterCTA } from "@/components/ui/pre-footer-cta";
-import { ArrowRight, BarChart3, Brain, Lock, Zap } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Activity,
+  ArrowRight,
+  Brain,
+  Cpu,
+  Lock,
+  Network,
+  ShieldCheck,
+  Zap,
+} from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -20,7 +29,7 @@ export default function Home() {
         aria-hidden="true"
       >
         <LightRays
-          color="transparent"
+          color="rgba(0, 0, 0, 0.05)"
           blendMode="multiply"
           count={20}
           speed={8}
@@ -107,63 +116,120 @@ export default function Home() {
       </section>
 
       {/* Features / Bento Grid */}
-      <section className="py-24 px-6 bg-neutral-50 dark:bg-black">
-        <div className="max-w-7xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold tracking-tighter mb-6">
-            SYSTEM ARCHITECTURE
-          </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl">
-            Our neural engine processes your biological data points to
-            reconstruct your daily performance capacity.
-          </p>
+      <section className="relative py-24 px-6 bg-neutral-50 dark:bg-black overflow-hidden">
+        {/* Ambient Background for Glassmorphism */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none z-0">
+          <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-neutral-200/50 dark:bg-neutral-800/20 rounded-full blur-[120px]" />
+          <div className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-neutral-200/50 dark:bg-neutral-800/20 rounded-full blur-[100px]" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl font-bold tracking-tighter mb-6">
+              THE NYMIT ENGINE
+            </h2>
+            <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl">
+              The neural architecture powering your biological optimization. We
+              don't just track data; we interpret the signal in the noise.
+            </p>
+          </motion.div>
         </div>
 
-        <BentoGrid>
-          <BentoCard
-            title="Neural Analysis"
-            description="Advanced pattern recognition for your health metrics."
-            header={
-              <div className="h-full min-h-[6rem] w-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center">
-                <Brain className="w-12 h-12 opacity-20" />
-              </div>
-            }
-            className="md:col-span-2"
-            icon={<Brain className="w-4 h-4" />}
-          />
-          <BentoCard
-            title="Real-time Sync"
-            description="Zero-latency synchronization across all devices."
-            header={
-              <div className="h-full min-h-[6rem] w-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center">
-                <Zap className="w-12 h-12 opacity-20" />
-              </div>
-            }
-            className="md:col-span-1"
-            icon={<Zap className="w-4 h-4" />}
-          />
-          <BentoCard
-            title="Encrypted Core"
-            description="Your biological data is encrypted at rest."
-            header={
-              <div className="h-full min-h-[6rem] w-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center">
-                <Lock className="w-12 h-12 opacity-20" />
-              </div>
-            }
-            className="md:col-span-1"
-            icon={<Lock className="w-4 h-4" />}
-          />
-          <BentoCard
-            title="Predictive Analytics"
-            description="Forecast your energy levels based on sleep debt."
-            header={
-              <div className="h-full min-h-[6rem] w-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center">
-                <BarChart3 className="w-12 h-12 opacity-20" />
-              </div>
-            }
-            className="md:col-span-2"
-            icon={<BarChart3 className="w-4 h-4" />}
-          />
-        </BentoGrid>
+        <div className="relative z-10">
+          <BentoGrid>
+            <BentoCard
+              title="Neural Synapse"
+              description="Proprietary AI that decodes your biological signals into actionable insights."
+              header={
+                <div className="h-full min-h-[6rem] w-full bg-neutral-100 dark:bg-white/5 flex items-center justify-center overflow-hidden">
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.5, 1, 0.5],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <Brain className="w-12 h-12 text-neutral-800 dark:text-neutral-200 opacity-80" />
+                  </motion.div>
+                </div>
+              }
+              className="md:col-span-2"
+              icon={<Cpu className="w-4 h-4" />}
+            />
+            <BentoCard
+              title="Quantum Link"
+              description="State synchronization across your digital ecosystem with zero latency."
+              header={
+                <div className="h-full min-h-[6rem] w-full bg-neutral-100 dark:bg-white/5 flex items-center justify-center overflow-hidden">
+                  <motion.div
+                    animate={{
+                      rotate: [0, 360],
+                    }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  >
+                    <Network className="w-12 h-12 text-neutral-800 dark:text-neutral-200 opacity-80" />
+                  </motion.div>
+                </div>
+              }
+              className="md:col-span-1"
+              icon={<Zap className="w-4 h-4" />}
+            />
+            <BentoCard
+              title="Vault Zero"
+              description="Military-grade AES-256 encryption. Your data remains yours, always."
+              header={
+                <div className="h-full min-h-[6rem] w-full bg-neutral-100 dark:bg-white/5 flex items-center justify-center overflow-hidden">
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <ShieldCheck className="w-12 h-12 text-neutral-800 dark:text-neutral-200 opacity-80" />
+                  </motion.div>
+                </div>
+              }
+              className="md:col-span-1"
+              icon={<Lock className="w-4 h-4" />}
+            />
+            <BentoCard
+              title="Predictive State"
+              description="Forecast your cognitive and physical capacity 24 hours in advance."
+              header={
+                <div className="h-full min-h-[6rem] w-full bg-neutral-100 dark:bg-white/5 flex items-center justify-center overflow-hidden gap-2">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <motion.div
+                      key={i}
+                      className="w-2 bg-neutral-400 dark:bg-neutral-600 rounded-full"
+                      animate={{
+                        height: [20, 40, 20],
+                        backgroundColor: ["#a3a3a3", "#525252", "#a3a3a3"],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.2,
+                      }}
+                    />
+                  ))}
+                </div>
+              }
+              className="md:col-span-2"
+              icon={<Activity className="w-4 h-4" />}
+            />
+          </BentoGrid>
+        </div>
       </section>
 
       {/* Intuitive Interactions Section */}
@@ -181,7 +247,7 @@ export default function Home() {
             NYMIT INC.
           </div>
           <div className="text-xs text-neutral-500 font-mono">
-            © 2025 NYMIT SYSTEM. ALL RIGHTS RESERVED.
+            © 2026 NYMIT SYSTEM. ALL RIGHTS RESERVED.
           </div>
         </div>
       </footer>
