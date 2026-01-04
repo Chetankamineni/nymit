@@ -142,3 +142,11 @@ export default function AuthenticationPage() {
     </AuthLayout>
   );
 }
+
+export default function AuthenticationPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AuthenticationContent />
+    </Suspense>
+  );
+}
