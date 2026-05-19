@@ -1,0 +1,29 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+
+    schedule:
+      interval: "monthly"
+
+    # Groups all dependency updates into one PR
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
+
+    versioning-strategy: auto
+
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+    labels:
+      - "dependencies"
+
+    reviewers:
+      - "Chetankamineni"
+
+    # Prevent too many PRs (optional safety)
+    open-pull-requests-limit: 2
