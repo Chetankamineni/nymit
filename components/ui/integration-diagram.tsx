@@ -8,10 +8,8 @@ import {
   Cloud,
   CreditCard,
   FileText,
-  Github,
   HardDrive,
   LayoutDashboard,
-  Slack,
   UserPlus,
   Users,
 } from "lucide-react";
@@ -327,8 +325,8 @@ export const IntegrationDiagram = () => {
             ref: ticketingRef,
             label: "Ticketing",
             icons: [
-              <Github size={14} key="11" />,
-              <Slack size={14} key="12" />,
+              <FileText size={14} key="11" />,
+              <Users size={14} key="12" />,
             ],
           },
         ].map((category, index) => (
