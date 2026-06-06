@@ -3,7 +3,6 @@
 import { BentoCard, BentoGrid } from "@/components/ui/hero-section/bento-grid";
 import { Dither } from "@/components/ui/hero-section/dither";
 import { ThemeToggle } from "@/components/ui/hero-section/theme-toggle";
-import { IntegrationDiagram } from "@/components/ui/integration-diagram";
 import { IntuitiveInteractions } from "@/components/ui/intuitive-interactions/intuitive-interactions";
 import { FeaturesOrbit } from "@/components/ui/landing/features-orbit";
 import { LightRays } from "@/components/ui/magic-ui/light-rays";
@@ -41,30 +40,33 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 border-b border-black/10 dark:border-white/10 bg-white/80 dark:bg-black/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="font-bold text-xl tracking-tighter flex items-center gap-2">
+          <Link
+            href="/"
+            className="font-bold text-xl tracking-tighter flex items-center gap-2 hover:opacity-80 transition-opacity"
+          >
             <div className="w-4 h-4 bg-black dark:bg-white" />
             nymit
-          </div>
+          </Link>
           <div className="flex items-center gap-6">
             <div className="hidden md:flex gap-6 text-sm font-medium">
-              <a
-                href="#"
+              <Link
+                href="/ai-coach"
                 className="hover:underline underline-offset-4 decoration-dotted"
               >
-                Product
-              </a>
-              <a
-                href="#"
+                AI Coach
+              </Link>
+              <Link
+                href="/dashboard"
                 className="hover:underline underline-offset-4 decoration-dotted"
               >
-                Manifesto
-              </a>
-              <a
-                href="#"
+                Dashboard
+              </Link>
+              <Link
+                href="#pricing"
                 className="hover:underline underline-offset-4 decoration-dotted"
               >
                 Pricing
-              </a>
+              </Link>
             </div>
             <ThemeToggle />
           </div>
@@ -100,9 +102,12 @@ export default function Home() {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
-              <button className="px-6 py-3 border border-black dark:border-white text-black dark:text-white font-medium text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all">
-                Read Manifesto
-              </button>
+              <Link
+                href="/dashboard"
+                className="px-6 py-3 border border-black dark:border-white text-black dark:text-white font-medium text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-all"
+              >
+                View Dashboard
+              </Link>
             </div>
           </div>
 
@@ -234,9 +239,6 @@ export default function Home() {
 
       {/* Intuitive Interactions Section */}
       <IntuitiveInteractions />
-
-      {/* Integration Diagram Section */}
-      <IntegrationDiagram />
 
       <PreFooterCTA />
       {/* Footer */}

@@ -2,12 +2,28 @@
 
 import { HydrationTracker } from "@/components/ui/dashboard/hydration-tracker";
 import { MacroProgressRings } from "@/components/ui/dashboard/macro-rings";
-import { MealSlots } from "@/components/ui/dashboard/meal-slots";
+import {
+  MealSlots,
+  DEFAULT_MEALS,
+  Meal,
+  FoodItem,
+} from "@/components/ui/dashboard/meal-slots";
+import { FoodSearch } from "@/components/ui/dashboard/food-search";
 import { ThemeToggle } from "@/components/ui/hero-section/theme-toggle";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function DashboardPage() {
   const router = useRouter();
+  const [meals, setMeals] = useState<Meal[]>(DEFAULT_MEALS);
+
+  const addItemToMeal = (mealId: string, item: FoodItem) => {
+    setMeals((prev) =>
+      prev.map((meal) =>
+        meal.id === mealId ? { ...meal, items: [...meal.items, item] } : meal,
+      ),
+    );
+  };
 
   const handleScanClick = (mealId: string) => {
     // Wire to your Vision Upload flow here
@@ -38,8 +54,27 @@ export default function DashboardPage() {
         {/* Macro rings */}
         <MacroProgressRings />
 
+        {/* Food search */}
+        <FoodSearch mealId="Lunch" />
+
+        {/* Wired to your existing MealSlots state */}
+        <FoodSearch
+          mealId="Breakfast"
+          onAddEntry={(entry) => {
+            // entry has: foodName, portionLabel, qty, cal, protein, carbs, fat, color
+            addItemToMeal("breakfast", {
+              name: entry.foodName,
+              cal: entry.cal,
+            });
+          }}
+        />
+
         {/* Meal slots */}
-        <MealSlots onScanClick={handleScanClick} />
+        <MealSlots
+          meals={meals}
+          onMealsChange={setMeals}
+          onScanClick={handleScanClick}
+        />
 
         {/* Hydration */}
         <HydrationTracker goal={8} initialCount={0} />
