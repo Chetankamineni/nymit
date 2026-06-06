@@ -1,0 +1,49 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// 1. Curated Local Food Dictionary (Deterministic lookup source)
+model FoodDictionary {
+  id               String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  searchSlug       String   @unique @map("search_slug")
+  displayName      String   @map("display_name")
+  servingUnit      String   @map("serving_unit")
+  calories         Int
+  proteinG         Decimal  @map("protein_g") @db.Decimal(4, 1)
+  carbsG           Decimal  @map("carbs_g") @db.Decimal(4, 1)
+  fatsG            Decimal  @map("fats_g") @db.Decimal(4, 1)
+  fiberG           Decimal  @map("fiber_g") @db.Decimal(4, 1)
+
+  @@index([searchSlug])
+  @@map("food_dictionary")
+}
+
+// 2. User Profiles to manage target outcomes
+model UserProfile {
+  id                 String    @id @db.Uuid // Matches Supabase Auth User ID
+  dailyCalorieTarget Int       @default(2000) @map("daily_calorie_target")
+  targetProteinG     Decimal   @default(80.0) @map("target_protein_g") @db.Decimal(5, 2)
+  targetFiberG       Decimal   @default(30.0) @map("target_fiber_g") @db.Decimal(5, 2)
+  mealLogs           MealLog[]
+
+  @@map("user_profiles")
+}
+
+// 3. User Meal Logs
+model MealLog {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId     String   @db.Uuid @map("user_id")
+  loggedAt   DateTime @default(now()) @map("logged_at")
+  userInput  String   @map("user_input") // Audit trail of what they actually said
+  macrosInfo Json     @map("macros_info") // Saved snapshot of computed carbs/protein/fat/fiber
+
+  user       UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, loggedAt])
+  @@map("meal_logs")
+}
