@@ -18,7 +18,7 @@ export interface Meal {
   items: FoodItem[];
 }
 
-const DEFAULT_MEALS: Meal[] = [
+export const DEFAULT_MEALS: Meal[] = [
   {
     id: "breakfast",
     name: "Breakfast",
@@ -196,26 +196,39 @@ function MealCard({ meal, onAdd, onRemove, onScanClick }: MealCardProps) {
 
 interface MealSlotsProps {
   initialMeals?: Meal[];
+  meals?: Meal[];
+  onMealsChange?: (meals: Meal[]) => void;
   onScanClick?: (mealId: string) => void;
 }
 
 export function MealSlots({
   initialMeals = DEFAULT_MEALS,
+  meals: mealsProp,
+  onMealsChange,
   onScanClick,
 }: MealSlotsProps) {
-  const [meals, setMeals] = useState<Meal[]>(initialMeals);
+  const [mealsState, setMealsState] = useState<Meal[]>(initialMeals);
+  const isControlled = mealsProp !== undefined;
+  const meals = mealsProp ?? mealsState;
+  const updateMeals = (nextMeals: Meal[]) => {
+    if (isControlled) {
+      onMealsChange?.(nextMeals);
+    } else {
+      setMealsState(nextMeals);
+    }
+  };
 
   const addItem = (mealId: string, item: FoodItem) => {
-    setMeals((prev) =>
-      prev.map((m) =>
+    updateMeals(
+      meals.map((m) =>
         m.id === mealId ? { ...m, items: [...m.items, item] } : m,
       ),
     );
   };
 
   const removeItem = (mealId: string, index: number) => {
-    setMeals((prev) =>
-      prev.map((m) =>
+    updateMeals(
+      meals.map((m) =>
         m.id === mealId
           ? { ...m, items: m.items.filter((_, i) => i !== index) }
           : m,
