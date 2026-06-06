@@ -7,7 +7,7 @@ import {
   calcCalories,
   calcMacros,
   getPortionGrams,
-} from "./indian-food-db";
+} from "../../../../lib/indian-food-db";
 
 interface PortionIconProps {
   type: "small_katori" | "large_katori" | "piece" | "multi_piece" | "plate";

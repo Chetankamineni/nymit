@@ -10,8 +10,8 @@ import {
   calcCalories,
   calcMacros,
   searchFoods,
-} from "./indian-food-db";
-import { PortionPicker } from "./portion-picker";
+} from "../../../../lib/indian-food-db";
+import { PortionPicker } from "../portion-picker/index";
 
 export interface LoggedEntry {
   id: string;

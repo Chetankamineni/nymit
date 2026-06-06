@@ -8,7 +8,7 @@ import {
   Meal,
   FoodItem,
 } from "@/components/ui/dashboard/meal-slots";
-import { FoodSearch } from "@/components/ui/dashboard/food-search";
+import { FoodSearch } from "@/components/ui/dashboard/food-search/index";
 import { ThemeToggle } from "@/components/ui/hero-section/theme-toggle";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
